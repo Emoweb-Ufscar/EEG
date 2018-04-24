@@ -17,32 +17,35 @@ import threading
 def send_datas(datas_user,signals):
     API_BASE = "https://api.myjson.com/"
     # TODO: Aqui os dados serão enviados para serem salvos no banco
-    print("DADOS ENVIADOS",neuropy.attention)
+    print("DADOS ENVIADOS",signals)
     return True
 
 
 ########################################################
+neuropy = NeuroPy("COM4")  # type: NeuroPy
+neuropy.start()
+print("start neuro")
 
 def start_capture(datas_user):    
-    neuropy.start()
+
     while True:
-        sleep(1)
+        #sleep(1)
 
-        send_datas(datas_user,neuropy)
+        #send_datas(datas_user,neuropy.attention)
 
-        #print( neuropy.attention,
-        #    neuropy.meditation,
-        #    neuropy.rawValue,
-        #    neuropy.delta,
-        #    neuropy.theta,
-        #    neuropy.lowAlpha,
-        #    neuropy.highAlpha,
-        #    neuropy.lowBeta,
-        #    neuropy.highBeta,
-        #    neuropy.lowGamma,
-        #    neuropy.midGamma,
-        #    neuropy.poorSignal,
-        #    neuropy.blinkStrength)
+        print( neuropy.attention,
+            neuropy.meditation,
+            neuropy.rawValue,
+            neuropy.delta,
+            neuropy.theta,
+            neuropy.lowAlpha,
+            neuropy.highAlpha,
+            neuropy.lowBeta,
+            neuropy.highBeta,
+            neuropy.lowGamma,
+            neuropy.midGamma,
+            neuropy.poorSignal,
+            neuropy.blinkStrength)
 
 
 
@@ -75,11 +78,11 @@ class RequestHandler(BaseHTTPRequestHandler):
         #print(request_headers)
         #print(user)
         #print(self.rfile.read(length))
-        start_capture(user)
+
         print("<----- Request End -----\n")
         
         self.send_response(200)
-    
+        start_capture(user)
     do_PUT = do_POST
     do_DELETE = do_GET
         
