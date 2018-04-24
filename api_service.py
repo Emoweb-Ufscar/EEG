@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 
 def send_datas(datas_user,signals):
     API_BASE = "https://api.myjson.com/"

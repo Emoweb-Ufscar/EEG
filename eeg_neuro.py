@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 from NeuroPy import NeuroPy
 from time import sleep
 import threading
 from api_service import *
 
-#neuropy = NeuroPy("COM4")  # type: NeuroPy
-neuropy = NeuroPy("/dev/rfcomm0",57600)  # type: NeuroPy
+neuropy = NeuroPy("COM4")  # type: NeuroPy
+#neuropy = NeuroPy("/dev/rfcomm0",57600)  # type: NeuroPy
 
 def attention_callback(attention_value):
     """this function will be called everytime NeuroPy has a new value for attention"""
