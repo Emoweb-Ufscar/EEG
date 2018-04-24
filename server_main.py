@@ -5,8 +5,48 @@
 
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 from optparse import OptionParser
-from eeg_neuro import *
+from NeuroPy import NeuroPy
+from time import sleep
+import threading
 
+
+
+########################################################
+
+
+def send_datas(datas_user,signals):
+    API_BASE = "https://api.myjson.com/"
+    # TODO: Aqui os dados serão enviados para serem salvos no banco
+    print("DADOS ENVIADOS",neuropy.attention)
+    return True
+
+
+########################################################
+
+def start_capture(datas_user):    
+    neuropy.start()
+    while True:
+        sleep(1)
+
+        send_datas(datas_user,neuropy)
+
+        #print( neuropy.attention,
+        #    neuropy.meditation,
+        #    neuropy.rawValue,
+        #    neuropy.delta,
+        #    neuropy.theta,
+        #    neuropy.lowAlpha,
+        #    neuropy.highAlpha,
+        #    neuropy.lowBeta,
+        #    neuropy.highBeta,
+        #    neuropy.lowGamma,
+        #    neuropy.midGamma,
+        #    neuropy.poorSignal,
+        #    neuropy.blinkStrength)
+
+
+
+########################################################
 class RequestHandler(BaseHTTPRequestHandler):
     
     def do_GET(self):

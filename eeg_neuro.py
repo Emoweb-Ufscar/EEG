@@ -35,10 +35,10 @@ def delta_callback(delta_value):
 #delta = neuropy.setCallBack("delta", delta_callback)
 
 #print("saida",delta ,medi, aten)
-neuropy.start()
+
 
 def start_capture(datas_user):    
-
+    neuropy.start()
     while True:
         sleep(1)
 
