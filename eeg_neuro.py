@@ -1,8 +1,10 @@
 from NeuroPy import NeuroPy
 from time import sleep
 import threading
+from api_service import *
 
-neuropy = NeuroPy("COM4")  # type: NeuroPy
+#neuropy = NeuroPy("COM4")  # type: NeuroPy
+neuropy = NeuroPy("/dev/rfcomm0",57600)  # type: NeuroPy
 
 def attention_callback(attention_value):
     """this function will be called everytime NeuroPy has a new value for attention"""
@@ -31,26 +33,29 @@ def delta_callback(delta_value):
 #neuropy.setCallBack("rawValue", rawValue_callback)
 #delta = neuropy.setCallBack("delta", delta_callback)
 
-
 #print("saida",delta ,medi, aten)
-
 neuropy.start()
 
-while True:
-    sleep(1)
-    print( neuropy.attention,
-           neuropy.meditation,
-           neuropy.rawValue,
-           neuropy.delta,
-           neuropy.theta,
-           neuropy.lowAlpha,
-           neuropy.highAlpha,
-           neuropy.lowBeta,
-           neuropy.highBeta,
-           neuropy.lowGamma,
-           neuropy.midGamma,
-           neuropy.poorSignal,
-           neuropy.blinkStrength)
+def start_capture(datas_user):    
+
+    while True:
+        sleep(1)
+
+        send_datas(datas_user,neuropy)
+
+        print( neuropy.attention,
+            neuropy.meditation,
+            neuropy.rawValue,
+            neuropy.delta,
+            neuropy.theta,
+            neuropy.lowAlpha,
+            neuropy.highAlpha,
+            neuropy.lowBeta,
+            neuropy.highBeta,
+            neuropy.lowGamma,
+            neuropy.midGamma,
+            neuropy.poorSignal,
+            neuropy.blinkStrength)
 
 
 try:
